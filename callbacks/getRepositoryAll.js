@@ -4,17 +4,11 @@ const {spawn} = require('child_process');
 
 const pathToRepos = process.argv[2];
 
-//Ручка GET /api/repos/:repositoryId(/tree/:commitHash/:path)
+//Ручка GET /api/repos/:repositoryId/all
 module.exports = function(request, response) {
 	const pathToRepo = path.join(pathToRepos, request.params['repositoryId']);
-	let commitHash = 'master';
-	let params = ['ls-tree', '--name-only', commitHash];
-	if (request.params['commitHash']) { //Проверка наличия в запросе ветки или хэша коммита
-		commitHash = request.params['commitHash'];
-		if (request.params['path']) { //Проверка наличия в запросе дальнейшего пути
-			params[2] += ':' + request.params['path'];
-		}
-	}
+	const commitHash = 'master';
+	const params = ['ls-tree', '-t', '-r', '--name-only', commitHash];
 	fs.access(pathToRepo, err => { //Проверка пути к репозиторию
 		if(err) {
 			response.status(404).send(pathToRepo + ' not found');
@@ -32,18 +26,18 @@ module.exports = function(request, response) {
 				else {
 					const names = out.split(/\n/);
 					names.pop(); //Удаление последнего пустого элемента
-					const pathToDir = request.params['path'] ? path.join(pathToRepo, request.params['path']) : pathToRepo; //Новый рабочий каталог для дочернего процесса
 					let promises = [];
 					names.forEach(name => { //Создание промисов на каждый элемент массива, запрашивающих дополнительные данные
 						const promise = new Promise (function(resolve) {
 							let out = '';
-							const commitInfo = spawn ('git', ['log', '-1', name], {cwd: pathToDir});
+							const commitInfo = spawn ('git', ['log', '-1', name], {cwd: pathToRepo});
 							commitInfo.stdout.on('data', chunk => {
 								out += chunk.toString();
 							});
 							commitInfo.on('close', () => {
 								const object = {
 									'name': name,
+									'shortName': name.split('/').reverse()[0],
 									'hash': out.match(/(?<=commit )\S{6}/)[0],
 									'message': out.match(/(?<=\n\n).*/)[0].trim(),
 									'commiter': out.match(/(?<=Author:).*(?=<)/)[0].trim(),

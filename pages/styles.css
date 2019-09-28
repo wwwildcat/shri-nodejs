@@ -233,6 +233,13 @@ a {
   height: 12px;
   background: url('images/icons/menu.svg') 50% 50% no-repeat;
 }
+
+.Icon-search {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: url('images/icons/search.svg') 50% 50% no-repeat;
+}
 /**** Смысловые блоки и элементы ****/
 /* Шапка */
 .Header {
@@ -343,6 +350,12 @@ a {
   padding: 0 32px;
 }
 
+.Main-flexContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 12px;
+}
+
 .Main-content {
   margin-top: 16px;
 }
@@ -352,8 +365,17 @@ a {
 }
 
 @media (max-width: 360px) {
+  .Main {
+    padding: 0;
+  }
+
   .Main-content_variable {
     margin-top: 12px;
+  }
+
+  .Main-flexContainer {
+    flex-direction: column;
+    margin: 10px 16px 0;
   }
 }
 /* Путь к текущему файлу/папке */
@@ -364,12 +386,15 @@ a {
   word-wrap: break-word;
   border-bottom: solid 1px #e5e5e5;
 }
-/* Текущие репозиторий и ветка */
-.Current {
-  margin-top: 12px;
-}
 
-.Current-fileName {
+@media (max-width: 360px) {
+  .Path {
+    margin: 0 16px;
+    padding-bottom: 8px;
+  }
+}
+/* Текущие репозиторий и ветка */
+.Current-objectName {
   display: inline-block;
   margin-bottom: 10px;
 }
@@ -382,20 +407,7 @@ a {
 }
 
 @media (max-width: 360px) {
-  .Main {
-    padding: 0;
-  }
-
-  .Path {
-    margin: 0 16px;
-    padding-bottom: 8px;
-  }
-
-  .Current {
-    margin: 10px 16px 0;
-  }
-
-  .Current-fileName {
+  .Current-objectName {
     margin-bottom: 4px;
   }
 
@@ -404,6 +416,33 @@ a {
     margin-bottom: 4px;
   }
 }
+
+/* Поле поиска */
+.Search {
+  margin-top: 10px;
+}
+
+.Search-input {
+  border: solid 1px #e5e5e5;
+  padding: 3px;
+}
+
+.Search-button {
+  width: 23px;
+  height: 23px;
+  padding: 3px;
+  background:  #e5e5e5;
+  border: solid 1px #e5e5e5;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+@media (max-width: 360px) {
+  .Search {
+    margin-top: 8px;
+  }
+}
+
 /* Раскрывающийся список веток */
 .BranchList_closed {
   display: none;
@@ -548,7 +587,7 @@ a {
   border-bottom: solid 1px #f2f2f2;
 }
 
-.Table-cell:last-child {
+.Table-cell:nth-child(5) {
   text-align: right;
 }
 

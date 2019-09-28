@@ -6,6 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href = "../styles.css">
         <script src = "../script.js"></script>
+        <script type="module" src = "../search.js"></script>
     </head>
     <body>
         <header class="Header">
@@ -22,44 +23,54 @@
         </header>
         <main class="Main">
             <div class="Path"><span class="Text Text_style_bold">arcadia</span></div>
-            <div class="Current">
-                <div class="Current-fileName Text Text_style_bold Text_size_24">arcadia</div>
-                <div class="Current-dropdown">
-                    <span class="Current-branchName Text Text_color_gray_2 Text_size_24">trunk</span>
-                    <span class="BranchList-arrow Icon Icon-arrowDownGray"></span>
-                    <ul class="BranchList BranchList_closed">
-                        <li class="BranchList-item">
-                            <div class="BranchList-itemName Text Text_style_bold">Trunk</div>
-                            <div class="BranchList-lastCommit Text Text_size_13 Text_lineHeight_20">Last commit 4 s ago</div>
-                        </li>
-                        <hr class="BranchList-break">
-                        <li class="BranchList-item">
-                            <div class="BranchList-itemName Text Text_style_bold Text_color_gray_1">users/rudskoy/DEVTOOLS-43865</div>
-                            <div class="BranchList-lastCommit Text Text_color_gray_2 Text_size_13 Text_lineHeight_20">Last commit 1 min ago</div>
-                        </li>
-                        <li class="BranchList-item">
-                            <div class="BranchList-itemName Text Text_style_bold Text_color_gray_1">users/rudskoy/DEVTOOLS-37948</div>
-                            <div class="BranchList-lastCommit Text Text_color_gray_2 Text_size_13 Text_lineHeight_20">Last commit at 16:25</div>
-                        </li>
-                        <li class="BranchList-item">
-                            <div class="BranchList-itemName Text Text_style_bold Text_color_gray_1">users/rudskoy/DEVTOOLS-94877</div>
-                            <div class="BranchList-lastCommit Text Text_color_gray_2 Text_size_13 Text_lineHeight_20">Last commit yesterday, 14:50</div>
-                        </li>
-                        <li class="BranchList-item">
-                            <div class="BranchList-itemName Text Text_style_bold Text_color_gray_1">users/rudskoy/DEVTOOLS-87450</div>
-                            <div class="BranchList-lastCommit Text Text_color_gray_2 Text_size_13 Text_lineHeight_20">Last commit on Jan 11, 12:01</div>
-                        </li>
-                        <li class="BranchList-item">
-                            <div class="BranchList-itemName Text Text_style_bold Text_color_gray_1">users/rudskoy/DEVTOOLS-27073</div>
-                            <div class="BranchList-lastCommit Text Text_color_gray_2 Text_size_13 Text_lineHeight_20">Last commit on Dec 29, 2017</div>
-                        </li>
-                    </ul>
+            <div class="Main-flexContainer">
+                <div class="Current">
+                    <div class="Current-objectName Text Text_style_bold Text_size_24">arcadia</div>
+                    <div class="Current-dropdown">
+                        <span class="Current-branchName Text Text_color_gray_2 Text_size_24">trunk</span>
+                        <span class="BranchList-arrow Icon Icon-arrowDownGray"></span>
+                        <ul class="BranchList BranchList_closed">
+                            <li class="BranchList-item">
+                                <div class="BranchList-itemName Text Text_style_bold">Trunk</div>
+                                <div class="BranchList-lastCommit Text Text_size_13 Text_lineHeight_20">Last commit 4 s ago</div>
+                            </li>
+                            <hr class="BranchList-break">
+                            <li class="BranchList-item">
+                                <div class="BranchList-itemName Text Text_style_bold Text_color_gray_1">users/rudskoy/DEVTOOLS-43865</div>
+                                <div class="BranchList-lastCommit Text Text_color_gray_2 Text_size_13 Text_lineHeight_20">Last commit 1 min ago</div>
+                            </li>
+                            <li class="BranchList-item">
+                                <div class="BranchList-itemName Text Text_style_bold Text_color_gray_1">users/rudskoy/DEVTOOLS-37948</div>
+                                <div class="BranchList-lastCommit Text Text_color_gray_2 Text_size_13 Text_lineHeight_20">Last commit at 16:25</div>
+                            </li>
+                            <li class="BranchList-item">
+                                <div class="BranchList-itemName Text Text_style_bold Text_color_gray_1">users/rudskoy/DEVTOOLS-94877</div>
+                                <div class="BranchList-lastCommit Text Text_color_gray_2 Text_size_13 Text_lineHeight_20">Last commit yesterday, 14:50</div>
+                            </li>
+                            <li class="BranchList-item">
+                                <div class="BranchList-itemName Text Text_style_bold Text_color_gray_1">users/rudskoy/DEVTOOLS-87450</div>
+                                <div class="BranchList-lastCommit Text Text_color_gray_2 Text_size_13 Text_lineHeight_20">Last commit on Jan 11, 12:01</div>
+                            </li>
+                            <li class="BranchList-item">
+                                <div class="BranchList-itemName Text Text_style_bold Text_color_gray_1">users/rudskoy/DEVTOOLS-27073</div>
+                                <div class="BranchList-lastCommit Text Text_color_gray_2 Text_size_13 Text_lineHeight_20">Last commit on Dec 29, 2017</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="Current-lastCommit Text">Last commit <a class="Text Text_color_lightBlue">c4d248</a> on <span class="Text Text_color_lightBlue">20 Oct 2017, 12:24</span> by <span class="Commiter">robot-srch-releaser</span></div>
                 </div>
-                <div class="Current-lastCommit Text">Last commit <a class="Text Text_color_lightBlue">c4d248</a> on <span class="Text Text_color_lightBlue">20 Oct 2017, 12:24</span> by <span class="Commiter">robot-srch-releaser</span></div>
+                <div class="Search">
+                    <form class="Search-form">
+                        <input type="search" placeholder="Найти файлы..." name="searchInput" class="Search-input">
+                        <button type="submit" class="Search-button">
+                            <span class="Icon Icon-search"></span>
+                        </button>
+                    </form>
+                </div>
             </div>
             <div class="Tabs Text Text_color_gray_2">
                 <span class="Tabs-tab Tabs-tab_selected Text Text_style_bold Text_size_16">FILES</span>
-                <a class="Tabs-tab Text Text_style_bold Text_size_16" href="arcadia_branches.html">BRANCHES</a>
+                <a class="Tabs-tab Text Text_style_bold Text_size_16" href="2-1">BRANCHES</a>
             </div>
             <div class="Table Table_content_files">
                 <div class="Table-row Text Text_style_bold Text_color_gray_5">
